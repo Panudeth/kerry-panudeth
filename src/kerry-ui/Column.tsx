@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode } from "react"
+import React, { PropsWithChildren, ReactNode, useMemo } from "react"
 
 interface ICol extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     sm?: number
@@ -8,10 +8,22 @@ interface ICol extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivEleme
     children: ReactNode
 }
 
-export const Column = ({ children, sm = 1, md = 1, lg = 1, xl = 1, }: PropsWithChildren<ICol>) => {
+export const Column = ({ children, sm , md , lg , xl , ...rest }: PropsWithChildren<ICol>) => {
 
+    const classProps: string = useMemo(() => {
+        const classArr = []
+        if (sm) classArr.push(`col-sm-${sm}`)
+        if (md) classArr.push(`col-md-${md}`)
+        if (lg) classArr.push(`col-lg-${lg}`)
+        if (xl) classArr.push(`col-xl-${xl}`)
+        if (classArr.length > 0) {
+            return classArr.join(' ')
+        }
+        return ''
+    }, [lg, md, sm, xl])
+    console.log({ classProps })
     return (
-        <div className={`col-sm-${sm ?? md ?? lg ?? xl}`}>
+        <div {...rest} className={classProps}>
             {children}
         </div>
     )

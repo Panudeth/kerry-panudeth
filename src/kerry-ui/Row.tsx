@@ -1,13 +1,14 @@
-import React, { PropsWithChildren } from "react"
+import React, { PropsWithChildren, ReactNode } from "react"
 
 interface IRow extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    spacing?: number
+    spacing?: number,
+    children: ReactNode
 }
 
-export const Row = (props: PropsWithChildren<IRow>) => {
+export const Row = ({ spacing, children, ...res }: PropsWithChildren<IRow>) => {
     return (
-        <div {...props} className='row'>
-            {props.children}
+        <div {...res} className='row'>
+            {children}
         </div>
     )
 }

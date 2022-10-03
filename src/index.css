@@ -10,10 +10,55 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+    font-family: "Sukhumvit-Set";
+    src: url("@/fonts/SukhumvitSet-Medium.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Sukhumvit-Set";
+    src: url("@/fonts/SukhumvitSet-Light.ttf");
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Sukhumvit-Set";
+    src: url("@/fonts/SukhumvitSet-Bold.ttf");
+    font-weight: bold;
+    font-style: normal;
+}
+
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+strong,
+pre,
+a {
+    font-family: Sukhumvit-Set;
+}
+
 #root {
     height: 100%;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+input:focus {
+    outline: none;
+}
+
+:root {
+    --kerry-main: #F58D50;
+    --kerry-sec: #F37024;
 }
