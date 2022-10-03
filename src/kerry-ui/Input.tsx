@@ -11,7 +11,7 @@ export const Input = ({
     ...res
 }: IInput) => {
     return (
-        <div style={{ margin: '2em auto' }}>
+        <div style={{ margin: '5% auto' }}>
             <span style={{ color: '#000', fontSize: '14px', fontWeight: 'bold' }}>{label}</span>
             <div style={{ display: 'flex', border: '1px solid #8C8C8C', borderRadius: '4px', padding: '8px 12px' }}>
                 <img src={icon} alt={label} />

@@ -5,7 +5,7 @@ export const Login = () => {
     return (
         <Box style={{ width: '100%', height: '100%', display: 'flex' }}>
             <Card width='100%' height='100%' maxWidth={750} maxHeight={820}
-                padding='2rem 4rem' angle="rounded" margin='auto'>
+                padding='2rem 12px' angle="rounded" margin='auto' overflow="auto" >
                 <Box style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} >
                     <h2 style={{ fontWeight: 'lighter', margin: 0 }}>Wellcome to
                         <span style={{ color: "var(--kerry-main)", fontWeight: 'lighter', marginLeft: '8px' }}>Kerry Express</span>
@@ -15,7 +15,7 @@ export const Login = () => {
                         <span style={{ color: "var(--kerry-main)", fontWeight: 'lighter', fontSize: '14px' }}>Sign in</span>
                     </Box>
                 </Box>
-                <Box>
+                <Box style={{ maxWidth: '431px', margin: 'auto' }}>
                     <h1 style={{ fontWeight: 'bold', margin: 0, fontSize: '3rem' }}>Signup</h1>
                     <Input icon="./images/account_outline.svg" label="Username" />
                     <Input icon="./images/email_outline.svg" label="Email" />
