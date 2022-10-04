@@ -21,7 +21,7 @@ export const Column = ({ children, sm , md , lg , xl , ...rest }: PropsWithChild
         }
         return ''
     }, [lg, md, sm, xl])
-    console.log({ classProps })
+
     return (
         <div {...rest} className={classProps}>
             {children}

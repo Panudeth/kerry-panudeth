@@ -22,7 +22,8 @@ export const Card = ({
 }: PropsWithChildren<ICard>): JSX.Element => {
     return <div style={{
         maxHeight,
-        maxWidth, height, width, padding, margin, background, borderRadius: angle === 'rounded' ? '20px' : undefined,overflow
+        maxWidth, height, width, padding, margin, background, borderRadius: angle === 'rounded' ? '20px' : undefined, overflow,
+        boxShadow: '0px 0px 20px 0px rgb(148 148 148 / 47%)'
     }}>
         {children}
     </div>
