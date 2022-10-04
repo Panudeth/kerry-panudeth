@@ -7,6 +7,7 @@ interface IInput extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLI
     icon?: string
     margin?: string
     field: ControllerRenderProps<RegisterInputs, any>
+    errors?: string
 }
 
 export const Input = ({
@@ -14,14 +15,15 @@ export const Input = ({
     icon,
     margin = '7% auto',
     field,
+    errors = '',
     ...res
 }: IInput) => {
     return (
         <div style={{ margin, ...res.style }}>
-            <span style={{ color: '#000', fontSize: '14px', fontWeight: 'bold' }}>{label}</span>
-            <div style={{ display: 'flex', border: '1px solid #8C8C8C', borderRadius: '4px', padding: '8px 12px' }}>
+            <span style={{ color: errors ? 'red' : '#000', fontSize: '14px', fontWeight: 'bold' }}>{`${label} ${errors}`}</span>
+            <div style={{ display: 'flex', border: errors ? '1px solid red' : '1px solid #8C8C8C', borderRadius: '4px', padding: '8px 12px' }}>
                 <img src={icon} alt={label} />
-                <input {...res} {...field} style={{ border: 0, width: '100%', marginLeft: '12px'}} placeholder={label} />
+                <input {...res} {...field} style={{ border: 0, width: '100%', marginLeft: '12px' }} placeholder={label} />
             </div>
         </div>
     )

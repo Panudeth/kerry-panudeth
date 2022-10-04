@@ -1,10 +1,10 @@
 import useMediaQuery from "@/hook/useMediaQuery"
-import { Box,  Input, Button, Row, Column } from "@/kerry-ui"
+import { Box, Input, Button, Row, Column } from "@/kerry-ui"
 import React, { Fragment } from "react"
 import { Controller, useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from '@hookform/resolvers/yup'
-import {  signInWithEmailAndPassword } from "firebase/auth"
+import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "@/firebase/firebaseConfig"
 import Swal from 'sweetalert2'
 import withReactContent from "sweetalert2-react-content"
@@ -39,20 +39,20 @@ export const SignIn = () => {
         resolver: yupResolver(schema)
     })
 
-    console.log('error', errors)
 
     const handleSignup = async (values: RegisterInputs) => {
         const { email, password } = values
-
         try {
+            dispatch(setUser({user:null, status: 'loading' }))
             const authData = await signInWithEmailAndPassword(auth, email, password)
             await signInWithEmailAndPassword(auth, email, password)
             dispatch(setUser({ user: authData.user, status: auth ? 'user' : '' }))
         } catch (e: any) {
+            dispatch(setUser({ user: null, status: '' }))
             console.error(e)
             MySwal.fire({
                 title: <p>Error!</p>,
-                text: e.message,
+                text: 'wrong email or password',
                 icon: 'error',
                 showConfirmButton: false
             })
@@ -80,20 +80,19 @@ export const SignIn = () => {
                     </Box>
                 </Column>
             </Row>
-            <h1 style={{ fontWeight: 'bold', margin: 0, fontSize: '3rem', marginLeft: '2rem', textAlign: matches ? 'center' : undefined }}>Sign in</h1>
+            <h1 style={{ fontWeight: 'bold', margin: 0, fontSize: matches ? '2rem' : '3rem', marginLeft: '2rem', textAlign: matches ? 'center' : undefined }}>Sign in</h1>
             <Box style={{ maxWidth: '431px', margin: 'auto' }}>
                 <form onSubmit={handleSubmit(handleSignup)}>
                     <Controller
                         name="email"
                         control={control}
-                        render={({ field }) => <Input field={field} margin={matches ? '4% auto' : undefined} icon="./images/email_outline.svg" label="Email" />}
+                        render={({ field }) => <Input field={field} margin={matches ? '4% auto' : undefined} icon="./images/email_outline.svg" label="Email" errors={errors.email && errors.email.message ? errors.email.message : ''} />}
                     />
                     <Controller
                         name="password"
                         control={control}
-                        render={({ field }) => <Input field={field} margin={matches ? '4% auto' : undefined} icon="./images/pass_outline.svg" label="Password"
-                            type='password'
-                            style={{ marginBottom: '0' }}
+                        render={({ field }) => <Input field={field} margin={matches ? '4% auto 0 auto' : '7% auto 0 auto'} icon="./images/pass_outline.svg" label="Password"
+                            type='password' errors={errors.password && errors.password.message ? errors.password.message : ''}
                         />}
                     />
                     <span onClick={undefined} style={{ color: "var(--kerry-main)", fontWeight: 'lighter', fontSize: '14px', cursor: 'pointer', textAlign: 'right', display: 'block', marginBottom: '24px' }}>Forgot password?</span>

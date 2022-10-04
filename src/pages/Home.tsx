@@ -9,7 +9,6 @@ import useMediaQuery from "@/hook/useMediaQuery"
 export const Home = () => {
     const { dialog } = useSelector(dialogSelector)
     const matches = useMediaQuery('(max-width: 768px)')
-    console.log('...', dialog)
     return (
         <Box style={{ display: 'flex', height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
             <Box style={{ width: '100%', height: dialog === 'signUp' ? matches ? 'fit-content' : '100%' : 'fit-content', display: 'flex', transition: '0.4s' }}>

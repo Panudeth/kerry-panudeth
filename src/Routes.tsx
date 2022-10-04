@@ -21,7 +21,10 @@ export const Routes = () => {
     const { user, status } = useSelector(userSelector)
 
     useEffect(() => {
+        if (status === 'loading') {
 
+            navigate('/loading')
+        }
         if (status === 'user' && !!user) {
             if (location.pathname !== '/') {
                 navigate(location.pathname)
@@ -40,20 +43,13 @@ export const Routes = () => {
     }, [location.pathname, navigate, status, user])
 
     const ProtectRoute = () => {
-
-
-        // const { loadingStatus } = useAuth()
-
-
         if (status === 'loading') {
             return <Route path="/loading" element={<LoadingForm />} />
         }
         if (status === 'user' && !!user) {
             return <Route path="/account" element={<Account />} />
         }
-
         return <Route path="/" element={<Home />} />
-
     }
     return (
         <Rout>

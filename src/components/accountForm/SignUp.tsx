@@ -27,7 +27,7 @@ const schema = yup.object({
     password: yup.string().required('required'),
     confirm: yup.string()
         .oneOf([yup.ref('password'), null], 'password does not match'),
-}).required()
+}).required('required')
 
 export const SignUp = () => {
     const dispatch = useAppDispacth()
@@ -46,18 +46,18 @@ export const SignUp = () => {
         resolver: yupResolver(schema)
     })
 
-    console.log('error', errors)
-
     const handleSignup = async (values: RegisterInputs) => {
         const { email, password, username } = values
 
         try {
+            dispatch(setUser({ user: null, status: 'loading' }))
             const authData = await createUserWithEmailAndPassword(auth, email, password)
             await updateProfile(authData.user, { displayName: username })
             await signInWithEmailAndPassword(auth, email, password)
             dispatch(setUser({ user: authData.user, status: auth ? 'user' : '' }))
         } catch (e: any) {
             console.error(e)
+            dispatch(setUser({ user: null, status: '' }))
             MySwal.fire({
                 title: <p>Error!</p>,
                 text: e.message,
@@ -95,30 +95,30 @@ export const SignUp = () => {
                     <Controller
                         name="username"
                         control={control}
-                        render={({ field }) => <Input field={field} margin={matches ? '0 auto' : undefined} icon="./images/account_outline.svg" label="Username"  />}
+                        render={({ field }) => <Input field={field} margin={matches ? '0 auto' : undefined} icon="./images/account_outline.svg" label="Username" errors={errors.username && errors.username.message ? errors.username.message : ''} />}
                     />
                     <Controller
                         name="email"
                         control={control}
-                        render={({ field }) => <Input field={field} margin={matches ? '0 auto' : undefined} icon="./images/email_outline.svg" label="Email" />}
+                        render={({ field }) => <Input field={field} margin={matches ? '0 auto' : undefined} icon="./images/email_outline.svg" label="Email" errors={errors.email && errors.email.message ? errors.email.message : ''} />}
                     />
                     <Controller
                         name="phone"
                         control={control}
-                        render={({ field }) => <Input field={field} margin={matches ? '0 auto' : undefined} icon="./images/phone_outline.svg" label="Phone" />}
+                        render={({ field }) => <Input field={field} margin={matches ? '0 auto' : undefined} icon="./images/phone_outline.svg" label="Phone" errors={errors.phone && errors.phone.message ? errors.phone.message : ''} />}
                     />
                     <Controller
                         name="password"
                         control={control}
                         render={({ field }) => <Input field={field} margin={matches ? '0 auto' : undefined} icon="./images/pass_outline.svg" label="Password"
-                            type='password'
+                            type='password' errors={errors.password && errors.password.message ? errors.password.message : ''}
                         />}
                     />
                     <Controller
                         name="confirm"
                         control={control}
                         render={({ field }) => <Input field={field} margin={matches ? '0 auto 4% auto' : undefined} icon="./images/pass_outline.svg" label="Confirm Password"
-                            type='password'
+                            type='password' errors={errors.confirm && errors.confirm.message ? errors.confirm.message : ''}
                         />}
                     />
                     <Button type='submit'>

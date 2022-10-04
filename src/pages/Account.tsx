@@ -17,8 +17,8 @@ export const Account = () => {
 
 
     const handleSignOut = () => {
+        dispatch(setUser({user:null, status: 'loading' }))
         signOut(auth).then(() => {
-            console.log('logout success')
             dispatch(setUser({ user: null, status: '' }))
             dispatch(setDialog({ dialog: 'signIn' }))
         }).catch((e) => {
