@@ -94,12 +94,15 @@ export const SignIn = () => {
                         control={control}
                         render={({ field }) => <Input field={field} margin={matches ? '4% auto' : undefined} icon="./images/pass_outline.svg" label="Password"
                             type='password'
+                            style={{ marginBottom: '0' }}
                         />}
                     />
+                    <span onClick={undefined} style={{ color: "var(--kerry-main)", fontWeight: 'lighter', fontSize: '14px', cursor: 'pointer', textAlign: 'right', display: 'block', marginBottom: '24px' }}>Forgot password?</span>
                     <Button type='submit'>
                         <span style={{ fontSize: '14px' }}>Sign in</span>
                     </Button>
                 </form>
+
             </Box>
         </Fragment>
 

@@ -7,7 +7,7 @@ import { SignIn } from "@/components/accountForm/SignIn"
 
 export const Home = () => {
     const { dialog } = useSelector(dialogSelector)
-
+    console.log('...', dialog)
     return (
         <Box style={{ display: 'flex', height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
             <Box style={{ width: '100%', height: dialog === 'signUp' ? '100%' : 'fit-content', display: 'flex', transition: '0.4s' }}>
