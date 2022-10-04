@@ -22,7 +22,7 @@ export type RegisterInputs = {
 
 const schema = yup.object({
     email: yup.string().email().required('not a valid email'),
-    password: yup.string().required('required'),
+    password: yup.string().min(6,'minimum 6 characters ').required('required'),
 }).required()
 
 export const SignIn = () => {

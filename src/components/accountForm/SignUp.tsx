@@ -23,8 +23,8 @@ export type RegisterInputs = {
 const schema = yup.object({
     username: yup.string().required('required'),
     email: yup.string().email().required('not a valid email'),
-    phone: yup.string().required('required'),
-    password: yup.string().required('required'),
+    phone: yup.string().matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, 'Phone number is not valid').required('required'),
+    password: yup.string().min(6, 'minimum 6 characters ').required('required'),
     confirm: yup.string()
         .oneOf([yup.ref('password'), null], 'password does not match'),
 }).required('required')
@@ -60,7 +60,7 @@ export const SignUp = () => {
             dispatch(setUser({ user: null, status: '' }))
             MySwal.fire({
                 title: <p>Error!</p>,
-                text: e.message,
+                text: e.message.replace('Firebase: Error', ''),
                 icon: 'error',
                 showConfirmButton: false
             })
