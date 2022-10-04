@@ -5,6 +5,10 @@ import { Controller, useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
 import * as yup from "yup"
 import { yupResolver } from '@hookform/resolvers/yup'
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
+import { auth } from "@/firebase/firebaseConfig"
+import Swal from 'sweetalert2'
+import withReactContent from "sweetalert2-react-content"
 
 export type RegisterInputs = {
     username: string,
@@ -25,6 +29,7 @@ const schema = yup.object({
 
 export const Login = () => {
     const matches = useMediaQuery('(max-width: 768px)')
+    const MySwal = withReactContent(Swal)
 
     const { handleSubmit, control, formState: { errors } } = useForm<RegisterInputs>({
         defaultValues: {
@@ -39,8 +44,21 @@ export const Login = () => {
 
     console.log('error', errors)
 
-    const handleSignup = (values: RegisterInputs) => {
-        console.log('>>>>', values)
+    const handleSignup = async (values: RegisterInputs) => {
+        const { email, password, username } = values
+
+        try {
+            const authData = await createUserWithEmailAndPassword(auth, email, password)
+            await updateProfile(authData.user, { displayName: username })
+        } catch (e: any) {
+            console.error(e)
+            MySwal.fire({
+                title: <p>Error!</p>,
+                text: e.message,
+                icon: 'error',
+                showConfirmButton: false
+            })
+        }
     }
 
 

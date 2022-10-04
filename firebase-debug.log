@@ -1,0 +1,21 @@
+[debug] [2022-10-04T04:22:47.963Z] ----------------------------------------------------------------------
+[debug] [2022-10-04T04:22:47.964Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Panudeth\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-10-04T04:22:47.965Z] CLI Version:   11.8.1
+[debug] [2022-10-04T04:22:47.965Z] Platform:      win32
+[debug] [2022-10-04T04:22:47.965Z] Node Version:  v16.15.0
+[debug] [2022-10-04T04:22:47.966Z] Time:          Tue Oct 04 2022 11:22:47 GMT+0700 (เวลาอินโดจีน)
+[debug] [2022-10-04T04:22:47.966Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-04T04:22:47.972Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-04T04:22:47.973Z] > authorizing via signed-in user (panudeth.jar@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Panudeth\Desktop\kerry-app
+
