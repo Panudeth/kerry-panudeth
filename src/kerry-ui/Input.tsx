@@ -1,4 +1,4 @@
-import { RegisterInputs } from '@/components/accountForm/Login'
+import { RegisterInputs } from '@/components/accountForm/SignUp'
 import React from 'react'
 import { ControllerRenderProps } from 'react-hook-form'
 
