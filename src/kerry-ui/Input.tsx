@@ -21,7 +21,7 @@ export const Input = ({
             <span style={{ color: '#000', fontSize: '14px', fontWeight: 'bold' }}>{label}</span>
             <div style={{ display: 'flex', border: '1px solid #8C8C8C', borderRadius: '4px', padding: '8px 12px' }}>
                 <img src={icon} alt={label} />
-                <input {...res} {...field} style={{ border: 0, width: '100%', marginLeft: '12px', ...res.style }} placeholder={label} />
+                <input {...res} {...field} style={{ border: 0, width: '100%', marginLeft: '12px'}} placeholder={label} />
             </div>
         </div>
     )

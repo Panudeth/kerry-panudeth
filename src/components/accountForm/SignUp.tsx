@@ -1,8 +1,7 @@
 import useMediaQuery from "@/hook/useMediaQuery"
-import { Box, Card, Input, Button, Row, Column } from "@/kerry-ui"
+import { Box, Input, Button, Row, Column } from "@/kerry-ui"
 import React, { Fragment } from "react"
 import { Controller, useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
 import * as yup from "yup"
 import { yupResolver } from '@hookform/resolvers/yup'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
@@ -90,35 +89,35 @@ export const SignUp = () => {
                     </Box>
                 </Column>
             </Row>
-            <h1 style={{ fontWeight: 'bold', margin: 0, fontSize: '3rem', marginLeft: '2rem', textAlign: matches ? 'center' : undefined }}>Sign up</h1>
+            <h1 style={{ fontWeight: 'bold', margin: 0, fontSize: matches ? '2rem' : '3rem', marginLeft: '2rem', textAlign: matches ? 'center' : undefined }}>Sign up</h1>
             <Box style={{ maxWidth: '431px', margin: 'auto' }}>
                 <form onSubmit={handleSubmit(handleSignup)}>
                     <Controller
                         name="username"
                         control={control}
-                        render={({ field }) => <Input field={field} margin={matches ? '4% auto' : undefined} icon="./images/account_outline.svg" label="Username" />}
+                        render={({ field }) => <Input field={field} margin={matches ? '0 auto' : undefined} icon="./images/account_outline.svg" label="Username"  />}
                     />
                     <Controller
                         name="email"
                         control={control}
-                        render={({ field }) => <Input field={field} margin={matches ? '4% auto' : undefined} icon="./images/email_outline.svg" label="Email" />}
+                        render={({ field }) => <Input field={field} margin={matches ? '0 auto' : undefined} icon="./images/email_outline.svg" label="Email" />}
                     />
                     <Controller
                         name="phone"
                         control={control}
-                        render={({ field }) => <Input field={field} margin={matches ? '4% auto' : undefined} icon="./images/phone_outline.svg" label="Phone" />}
+                        render={({ field }) => <Input field={field} margin={matches ? '0 auto' : undefined} icon="./images/phone_outline.svg" label="Phone" />}
                     />
                     <Controller
                         name="password"
                         control={control}
-                        render={({ field }) => <Input field={field} margin={matches ? '4% auto' : undefined} icon="./images/pass_outline.svg" label="Password"
+                        render={({ field }) => <Input field={field} margin={matches ? '0 auto' : undefined} icon="./images/pass_outline.svg" label="Password"
                             type='password'
                         />}
                     />
                     <Controller
                         name="confirm"
                         control={control}
-                        render={({ field }) => <Input field={field} margin={matches ? '4% auto' : undefined} icon="./images/pass_outline.svg" label="Confirm Password"
+                        render={({ field }) => <Input field={field} margin={matches ? '0 auto 4% auto' : undefined} icon="./images/pass_outline.svg" label="Confirm Password"
                             type='password'
                         />}
                     />

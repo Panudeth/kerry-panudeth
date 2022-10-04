@@ -4,7 +4,6 @@ import { setUser, userSelector } from "@/store/slices/userSlice"
 import { useSelector } from "react-redux"
 import { auth } from "@/firebase/firebaseConfig"
 import { signOut } from "firebase/auth"
-import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
 import { setDialog } from "@/store/slices/dialogSlice"
@@ -12,7 +11,6 @@ import { useAppDispacth } from "@/store/store"
 
 export const Account = () => {
     const { user } = useSelector(userSelector)
-    const navigate = useNavigate()
     const MySwal = withReactContent(Swal)
 
     const dispatch = useAppDispacth()

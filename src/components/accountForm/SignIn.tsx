@@ -1,11 +1,10 @@
 import useMediaQuery from "@/hook/useMediaQuery"
-import { Box, Card, Input, Button, Row, Column } from "@/kerry-ui"
+import { Box,  Input, Button, Row, Column } from "@/kerry-ui"
 import React, { Fragment } from "react"
 import { Controller, useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
 import * as yup from "yup"
 import { yupResolver } from '@hookform/resolvers/yup'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
+import {  signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "@/firebase/firebaseConfig"
 import Swal from 'sweetalert2'
 import withReactContent from "sweetalert2-react-content"
